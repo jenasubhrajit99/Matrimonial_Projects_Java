@@ -1,0 +1,105 @@
+ create user matrimony_nit identified by jeet;
+
+User created.
+
+SQL> grant dba to matrimony_nit;
+
+Grant succeeded.
+username:matrimony_nit
+password:jeet;
+
+-------------------------
+Register
+--------
+create table users(
+    userid number primary key,
+	MATRIMONYPROFILEFOR varchar2(20),
+	NAME varchar2(50),
+	EMAILID varchar2(50),
+	DATEOFBIRTH varchar2(20),
+	PASSWORD varchar2(50),
+	GENDER varchar2(10),
+	MOBILENO varchar2(10),
+	RELIGION varchar2(30),
+	MOTHERTONGUE varchar2(20),
+	COUNTRYLIVINGIN varchar2(30),
+	login_time varchar2(30),
+	logout_time varchar2(30)
+	);
+--------------------------------
+Create Sequence:
+----------------------------------------
+create sequence userid_seq start with 5000;
+----------------------------------
+Create Trigger automatic value increment:
+
+create trigger trg_userid
+     before insert on users
+      for each row
+    begin
+      select userid_seq.nextval
+        into :new.userid
+        from dual;
+    end;
+    /
+
+
+
+Religion Detail
+------------------
+create table Religion_detail
+(
+	CAST varchar2(30),
+	SUBCAST varchar2(30),
+	GOTHRA varchar2(30),
+	DOSH_No_YES_DONTKNOW varchar2(15),
+	DOSH_YES_MANGLIK varchar2(20),
+	DOSH_YES_SARPADOSH varchar2(50),
+	DOSH_YES_KALASARAPSOSH varchar2(50),
+	DOSH_YES_RAHUDOSH varchar2(50),
+	DOSH_YES_KETHUDOSH varchar2(50),
+	DOSH_YES_KALATHRADOSH varchar2(50),
+	EMAIL_ID varchar2(30) 
+	);
+----------------------------------------------
+PERSONAL DETAILS
+------------------
+create table personal_details
+(
+	MARITAL_STATUS varchar2(50),
+	MARITAL_STATUSNumberofChildren varchar2(50),
+	MARITAL_STATUS_WITH_or_not varchar2(100),
+	HEIGHT varchar2(100),
+	FAMILY_STATUS varchar2(70),
+	FAMILY_TYPE varchar2(50),
+	FAMILY_VALUES varchar2(50),
+	ANY_DISABILITY varchar2(50),
+	EMAIL_ID varchar2(50)
+);
+----------------------------------------------
+PROFESSIONAL DETAILS
+--------------------
+create table professional_details
+(
+	HIGHEST_EDUCATION varchar2(200),
+	EMPLOYED_IN varchar2(100),
+	OCCUPATION_STATUS varchar2(200),
+	ANNUAL_INCOME varchar2(100),
+	WORK_LOCATIONCOUNTRY varchar2(100),
+	WORK_LOCATIONCITIZENSHIP varchar2(100),
+	BRIDES_LOCATIONCOUNTRY varchar2(100),
+	BRIDES_CURRENTCITIZENSHIP varchar2(100),
+	EMAIL_ID varchar2(50)
+);
+---------------------------------------------------
+RegisterAbout
+---------------
+create table registerabout
+(
+	About_you varchar2(500),
+	EMAIL_ID varchar2(50)
+);
+
+------------------------------------------------------------------------------------
+Here Your Profile Complited.
+------------------------------------------------------------------------------------
